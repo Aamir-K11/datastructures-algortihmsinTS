@@ -23,6 +23,21 @@ export default class SinglyLinkedList<T> {
         }
     }
 
+   reverse(){
+        let current  = this.head;
+        let previous, temp;
+
+        while(current) {
+            temp = current.next;
+            current.next = previous;
+            previous = current;
+            current = temp;
+        }
+
+        this.head = previous;
+        
+   }
+
    printList(): void {
         let current = this.head;
         while(current) {
