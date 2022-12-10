@@ -38,6 +38,19 @@ export default class SinglyLinkedList<T> {
         
    }
 
+   search(searchItem){
+        let index = -1;
+        let current = this.head;
+        while(current) {
+            index ++;
+            if(current.data === searchItem) {
+                return index;
+            }
+            current = current.next;
+        }
+        return -1;
+   }
+
    printList(): void {
         let current = this.head;
         while(current) {
