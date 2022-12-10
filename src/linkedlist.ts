@@ -61,6 +61,28 @@ export default class SinglyLinkedList<T> {
         return len;
    }
 
+   delete(index) {
+        if( index === undefined || index < 0 || this.length() - 1 < index) return;
+
+        if(index == 0) {
+            let previous = this.head;
+            this.head = previous.next;
+            previous = null;
+            return;
+        }
+
+        let current = this.head;
+        let previous;
+
+        for(let i = 0; i < index; i++) {
+            previous = current;
+            current = current.next;
+        }
+
+        previous.next = current.next;
+        current = null;
+   }
+
    printList(): void {
         let current = this.head;
         while(current) {
