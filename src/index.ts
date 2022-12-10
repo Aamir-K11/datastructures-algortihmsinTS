@@ -2,6 +2,6 @@ import SinglyLinkedList from "./linkedlist";
 
 let singleLinkedList = new SinglyLinkedList<number>();
 
-[].forEach((num) => singleLinkedList.append(num)); 
+[1,2,3,4,5].forEach((num) => singleLinkedList.append(num)); 
 
-console.log(singleLinkedList.search(4));
+console.log(singleLinkedList.length());

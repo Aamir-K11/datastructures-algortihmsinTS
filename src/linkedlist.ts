@@ -51,6 +51,16 @@ export default class SinglyLinkedList<T> {
         return -1;
    }
 
+   length() {
+        let len = 0;
+        let current = this.head;
+        while(current) {
+            len++;
+            current = current.next;
+        }
+        return len;
+   }
+
    printList(): void {
         let current = this.head;
         while(current) {
