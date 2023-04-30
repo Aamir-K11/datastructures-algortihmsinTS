@@ -1,4 +1,4 @@
-class TreeNode<T> {
+export class TreeNode<T> {
 
     private _data: T;
     private _left: TreeNode<T>;
@@ -29,12 +29,13 @@ class TreeNode<T> {
     }
 }
 
-class BinaryTree<T> {
+export default class BinaryTree<T> {
 
     private _root: TreeNode<T>;
 
-    constructor(root: TreeNode<T>) {
-        this._root = root;
+    constructor(data: T) {
+        this._root = new TreeNode<T>();
+        this._root.data = data;
     }
 
     get root(): TreeNode<T> {
@@ -45,9 +46,11 @@ class BinaryTree<T> {
         this._root = root;
     }
 
-    insert(node: TreeNode<T>) {
+    insert(data: T) {
 
-        let current = this.root;
+        let current = this._root;
+        let node = new TreeNode<T>();
+        node.data = data;
 
         while(true) {
             
@@ -73,5 +76,14 @@ class BinaryTree<T> {
             }
         }
           
+    }
+
+    inOrderTraversal(node: TreeNode<T>, cb: (node: TreeNode<T>) => void) {
+
+        if(!node) return;
+        
+        this.inOrderTraversal(node.left, cb);
+        cb(node);
+        this.inOrderTraversal(node.right,cb);
     }
 }

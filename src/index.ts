@@ -1,9 +1,7 @@
-import SinglyLinkedList from "./linkedlist";
+import BinaryTree, {TreeNode} from "./binarytree";
 
-let singleLinkedList = new SinglyLinkedList<number>();
+let binarytree = new BinaryTree<number>(100);
 
-[1,2,3,4,5].forEach((num) => singleLinkedList.append(num)); 
+[20, 200, 10, 30, 150, 300].forEach((num) => binarytree.insert(num)); 
 
-singleLinkedList.delete(-1);
-console.log(singleLinkedList.printList());
-
+binarytree.inOrderTraversal(binarytree.root, (node) => console.log(node.data));
