@@ -95,4 +95,13 @@ export default class BinaryTree<T> {
         this.postOrderTraversal(node.right, cb);
         cb(node);
     }
+
+    preOrderTraversal(node: TreeNode<T>, cb: (node: TreeNode<T>) => void) {
+
+        if(!node) return;
+
+        cb(node);
+        this.preOrderTraversal(node.left, cb);
+        this.preOrderTraversal(node.right, cb);
+    }
 }
