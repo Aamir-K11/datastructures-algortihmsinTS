@@ -48,34 +48,35 @@ export default class BinaryTree<T> {
 
     insert(data: T) {
 
-        let current = this._root;
-        let node = new TreeNode<T>();
-        node.data = data;
+        const newNode = new TreeNode<T>();
+        newNode.data = data;
 
-        while(true) {
-            
-            if(node.data < current.data) {
+        let current = this.root;
+        let queue = [current];
 
-                if(current.left !== undefined) {
-                    current = current.left;
-                } else {
-                    current.left = node;
-                    return current.left;
-                }
+
+        while(queue.length !== 0) {
+
+            current = queue.pop();
+
+            if(current.left) {
+                queue.unshift(current.left);   
             }
 
-            else if(node.data > current.data) {
-                
-                if(current.right !== undefined) {
-                    current = current.right;
-                } else {
-                    current.right = node;
-                    return current.right;
-                }
+            else {
+                current.left = newNode;
+                return;
+            }
 
+            if(current.right) {
+                queue.unshift(current.right);
+            }
+
+            else {
+                current.right = newNode;
+                return;
             }
         }
-          
     }
 
     inOrderTraversal(node: TreeNode<T>, cb: (node: TreeNode<T>) => void) {
@@ -105,30 +106,32 @@ export default class BinaryTree<T> {
         this.preOrderTraversal(node.right, cb);
     }
 
-    printSameLevelNodes(node: TreeNode<T>) {
-        
-        console.log(node.data)
-        
-    }
-
-    levelOrderTraversal(node: TreeNode<T>) {
+    levelOrderTraversal(node: TreeNode<T>, cb: (output: TreeNode<T>[][]) => TreeNode<T>[][] | void) {
 
         if(!node) return; 
 
         let queue = [];
+        let output = [];
 
         queue.push(node);
+        output.push([node.data]);
 
         while(queue.length != 0) {
 
             node = queue.pop();
-            console.log(node.data);
 
-            if(node.left) queue.unshift(node.left);
+            if(node.left) {
+                queue.unshift(node.left);
+                output.push([node.left.data]);
+            }
 
-            if(node.right) queue.unshift(node.right);
+            if(node.right) {
+                queue.unshift(node.right);
+                output[output.length - 1].push(node.right.data);
+            };
 
         }
-        
+
+        cb(output);
     }
 }
