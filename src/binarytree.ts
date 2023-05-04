@@ -104,4 +104,31 @@ export default class BinaryTree<T> {
         this.preOrderTraversal(node.left, cb);
         this.preOrderTraversal(node.right, cb);
     }
+
+    printSameLevelNodes(node: TreeNode<T>) {
+        
+        console.log(node.data)
+        
+    }
+
+    levelOrderTraversal(node: TreeNode<T>) {
+
+        if(!node) return; 
+
+        let queue = [];
+
+        queue.push(node);
+
+        while(queue.length != 0) {
+
+            node = queue.pop();
+            console.log(node.data);
+
+            if(node.left) queue.unshift(node.left);
+
+            if(node.right) queue.unshift(node.right);
+
+        }
+        
+    }
 }

@@ -1,7 +1,8 @@
 import BinaryTree, {TreeNode} from "./binarytree";
 
-let binarytree = new BinaryTree<number>(40);
+let binarytree = new BinaryTree<number>(100);
 
-[30, 50, 25, 35].forEach((num) => binarytree.insert(num)); 
+[1000, 2000, 50].forEach((num) => binarytree.insert(num)); 
 
-binarytree.preOrderTraversal(binarytree.root, (node) => console.log(node.data));
+binarytree.levelOrderTraversal(binarytree.root);
+
