@@ -2,6 +2,10 @@ import LinkedListNode from "./node";
 export default class SinglyLinkedList<T> {
     private _head: LinkedListNode<T> | null = null;
 
+    constructor(data?: T) {
+        if(data) this._head = new LinkedListNode<T>(data);
+    }
+
     get head() {
         return this._head;
     }
@@ -51,18 +55,15 @@ export default class SinglyLinkedList<T> {
         return -1;
    }
 
-   length() {
-        let len = 0;
-        let current = this.head;
-        while(current) {
-            len++;
-            current = current.next;
-        }
-        return len;
+   length(node: LinkedListNode<T> = this._head) {
+        
+        if(!node) return 0;
+
+        return 1 + this.length(node.next);
    }
 
    delete(index) {
-        if( index === undefined || index < 0 || this.length() - 1 < index) return;
+        if( index === undefined || index < 0 || this.length(this.head) - 1 < index) return;
 
         if(index == 0) {
             let previous = this.head;
