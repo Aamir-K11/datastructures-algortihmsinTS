@@ -14,17 +14,20 @@ export default class SinglyLinkedList<T> {
         this._head = head;
     }
 
-    append(data: T): void {
-        if(!this.head) {
-            this.head = new LinkedListNode(data);
-        }
+    append(data: T, node = this._head ): void {
+
+        if (!node) {
+            this._head = new LinkedListNode<T>(data);
+            return;
+        } 
+        else if (!node.next) {
+            node.next = new LinkedListNode<T>(data);
+            return;
+        } 
         else {
-            let current = this.head;
-            while(current.next) {
-                current = current.next;
-            }
-            current.next = new LinkedListNode(data);
+            return this.append(data, node.next);
         }
+
     }
 
    reverse(){
@@ -42,20 +45,16 @@ export default class SinglyLinkedList<T> {
         
    }
 
-   search(searchItem){
-        let index = -1;
-        let current = this.head;
-        while(current) {
-            index ++;
-            if(current.data === searchItem) {
-                return index;
-            }
-            current = current.next;
-        }
-        return -1;
+   search(searchItem: T, node = this._head, index: number = 0) {
+
+        if(!node) return -1;
+
+        if(node.data === searchItem) return index; 
+        
+        return this.search(searchItem, node.next, index + 1);
    }
 
-   length(node: LinkedListNode<T> = this._head) {
+   length(node = this._head) {
         
         if(!node) return 0;
 
@@ -84,11 +83,11 @@ export default class SinglyLinkedList<T> {
         current = null;
    }
 
-   printList(): void {
-        let current = this.head;
-        while(current) {
-            console.log(current.data);
-            current = current.next;
+   print(node = this._head): void {
+        
+        if(node) {
+            console.log(node.data);
+            this.print(node.next);
         }
    }
 }
