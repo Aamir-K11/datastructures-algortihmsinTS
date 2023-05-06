@@ -134,4 +134,14 @@ export default class BinaryTree<T> {
 
         cb(output);
     }
+
+    getHeight(node: TreeNode<T>) {
+
+        if(!node) return 0;
+
+        let lmax = this.getHeight(node.left);
+        let rmax = this.getHeight(node.right);
+
+        return Math.max(lmax, rmax) + 1;
+    }
 }
