@@ -1,5 +1,5 @@
 import BinaryTree, {TreeNode} from "./binarytree";
-import SinglyLinkedList from "./linkedlist";
+import SinglyLinkedList from "./linkedlist/linkedlist";
 
 let singlyLinkedList = new SinglyLinkedList();
 singlyLinkedList.append(1);

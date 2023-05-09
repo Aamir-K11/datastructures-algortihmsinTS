@@ -1,4 +1,4 @@
-import LinkedListNode from "./node";
+import LinkedListNode from "../node";
 export default class SinglyLinkedList<T> {
     private _head: LinkedListNode<T> | null = null;
 
