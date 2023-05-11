@@ -1,6 +1,7 @@
 import SinglyLinkedList from "../linkedlist";
 import findMiddle from "../find-linkedlist-middle";
 import getFrequency from "../count-frequency";
+import isCircular from "../check-if-circular";
 
 
 describe('Linkedlist Challenges', () => {
@@ -27,6 +28,11 @@ describe('Linkedlist Challenges', () => {
     test('getFrequency() should return the count of a key', () => {
         
         expect(getFrequency(linkedlist.head, 6)).toBe(0);
+    })
+
+    test('isCircular() should return a boolean based on the condition that the list is circular', () => {
+
+        expect(isCircular(linkedlist.head)).toBe(false);
     })
 
 })
