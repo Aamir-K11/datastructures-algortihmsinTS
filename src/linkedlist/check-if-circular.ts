@@ -8,7 +8,7 @@ export default function isCircular<T>(head: LinkedListNode<T>) : boolean {
 
     if(!head) return true;
 
-    let current = head;
+    let current = head.next;
 
     while(current && current !== head) {
 
