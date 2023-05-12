@@ -2,6 +2,7 @@ import SinglyLinkedList from "../linkedlist";
 import findMiddle from "../find-linkedlist-middle";
 import getFrequency from "../count-frequency";
 import isCircular from "../check-if-circular";
+import toCircular from "../../single-to-circular-list";
 
 
 describe('Linkedlist Challenges', () => {
@@ -33,6 +34,11 @@ describe('Linkedlist Challenges', () => {
     test('isCircular() should return a boolean based on the condition that the list is circular', () => {
 
         expect(isCircular(linkedlist.head)).toBe(false);
+    })
+
+    test('toCircular() converts a singly linked list to a circular list', () => {
+       
+        expect(isCircular(toCircular(linkedlist.head))).toBe(true);
     })
 
 })
