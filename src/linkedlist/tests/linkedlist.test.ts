@@ -18,6 +18,7 @@ describe('Linkedlist Challenges', () => {
         linkedlist.append(3);
         linkedlist.append(4);
         linkedlist.append(5);
+        linkedlist.append(6);
     
         return linkedlist;
     })
